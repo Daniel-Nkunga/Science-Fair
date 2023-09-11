@@ -3,7 +3,7 @@ import cv2
 
 # Initialize the face detector and facial landmark predictor
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat') # You'll need to download this file
+predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat.bzz') # You'll need to download this file
 
 # Initialize the webcam (you can change the source if using a different camera)
 cap = cv2.VideoCapture(0)
