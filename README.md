@@ -1,8 +1,9 @@
 # Science-Fair
 
-This is a repository denoting my Science Fair Project for the 2023-2024 school year. The goal of this project is to create an AI that is able to read lips turning lip movements into text. Ideally, there would be two models where one is trained via brute force where the AI comes up with its own conclusions on how to read lips and another AI would be trained using a more human method where context will be givin and facial structure will be examined to guess what a person is saying. 
+ISEF Science Fair 2023 - Building AI Lip Reading Models
 
-This is my first GitHub repo. I do not know how to structure it [yet]. When it is organized, it will follow a folder structure where the largest folders were be the two* AI models titled Brute Force and Influenced.
-
-The project is currently in its fledgling stages. I am just learning how to use dlib to track facial movements. 
+Description
+This is a Science Fair project aiming to build AIs that are able to read lips. This will be done by multiple mehtods which will be compared against each other for accuracy, speed, and readability. AI Models will be trained by by these models:
+    -Brute Force: the AI will be given hours of videos to train on and come up with its own conclusions on how to read lips. Its goal is both accuracy and speed, but it will probably get more caught up on a person's stutters/bad speech habits.
+    -Human Based Model: the AI will be trained to read lips more like a human focusing on getting the theme of the message over the exact words a person is saying. The AI will be given a word of context and told to put more emphasis on eyebrows, eyes, nose, etc. to get more of a gist of what a person is saying. Ideally, generative AI would be used to create these phrases and build text from the context given.
 
