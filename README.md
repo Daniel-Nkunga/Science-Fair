@@ -29,5 +29,5 @@ A list of common issues with the program
 ### Author
 Daniel Nkunga  
     [LinkedIn](https://www.linkedin.com/in/daniel-nkunga-702038288?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bxk29nW4FTRyZWjAykxRi1A%3D%3D)  
-    [School Email](nkungad24@asmsa.org)  
-    [Professional Email](daniel.s.nkunga@gmail.com)
+    [School Email](mailto:nkungad24@asmsa.org)  
+    [Professional Email](mailto:daniel.s.nkunga@gmail.com)
