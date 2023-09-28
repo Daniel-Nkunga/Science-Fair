@@ -38,7 +38,7 @@ while True:
         # Draw face landmarks on the frame
         for i in range(28, 68): #This part was changed
             if 28 <= i <= 35 or 49 <= i <= 68:
-                x, y, z = landmarks.part(i).x, landmarks.part(i).y, landmarks.part(i).z
+                x, y = landmarks.part(i).x, landmarks.part(i).y
                 cv2.circle(frame, (x, y), 2, (0, 255, 0), -1)
 
     # Display the frame with face landmarks
