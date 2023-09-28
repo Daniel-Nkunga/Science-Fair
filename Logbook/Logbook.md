@@ -16,13 +16,13 @@ From the start of this project to September 28th, this logbook was not kept. A p
 
 ### Initial Project Research
 #### August 22nd - August 24th 2023
-The first two days of the project were spent researching background infomation on the Lip Reading AI that has existed in the past. An article from [Engadget](www.engadget.com/ai-is-already-better-at-lip-reading-that-we-are-183016968.html) summarized an wide overview of the industry's advancements and methods in using AI to read lips. It ultimately led to the decision to make this project more comparative where different training methods would be used to compare accuracy with AIs with the two gained from this article being a brute force method and a more human based method.  
+The first two days of the project were spent researching background infomation on the Lip Reading AI that has existed in the past. An article from [Engadget](https://www.engadget.com/ai-is-already-better-at-lip-reading-that-we-are-183016968.html?guccounter=1) summarized an wide overview of the industry's advancements and methods in using AI to read lips. It ultimately led to the decision to make this project more comparative where different training methods would be used to compare accuracy with AIs with the two gained from this article being a brute force method and a more human based method.  
 The brute force method would be just giving an AI hours of content with captions and telling it to generate captions of other videos. There would be minimum input or aid on the part of the researcher. The human based method would be based on the fact that when humans read lips, they focus more on getting the main concept of what's being said as opposed to verbatim translations of lip movements to words. The goal is to have a generative AI caption a video while focusing on a given prompt, eyebrow and nose movements, as well as lip movements.   
 The article also referrenced that past researched was trained on hours of footage from the BBC that can be used for educational and research purposes. 
 
 #### August 28th - *September 15th 2023
 [These dates are not exact] 
-The next phase of the process was used to set up a virtual machine to get Dlib, the program used to place facial recognition dots, up and running. Though not as complicated in hindsight, it took a long time to get it running initially and to place dots on faces.  
+The next phase of the process was used to set up a virtual machine to get [Dlib](http://dlib.net/face_landmark_detection.py.html), the program used to place facial recognition dots, up and running. Though not as complicated in hindsight, it took a long time to get it running initially and to place dots on faces.  
 Afterwards, dots were isolated to only be over the nose and moth so training could be easier. A project could be made here so long as subjects were only allowed to face directly towards the camera but it was decided to project the dots onto a 3D shape to better track the dots on an object moving in 3D. 
 
 ![Dlib facial landmarks on Daniel's Face - September 28, 2023](/Logbook/Images/Facial_Landmarks_Initial.jpg)
@@ -34,7 +34,7 @@ Afterwards, dots were isolated to only be over the nose and moth so training cou
 
 #### September 20th - September 21st 2023
 Corresponded with Rob Cooper from the BBC to aquire footage for later training AI. This footage has been used before to train an AI model to read lips for Lipnet's lip reading model. Aquiring and using require a form and is valid for a year.  
-Because using the footage requires extra citations to use in research environments, most photos and videos in this research will be done by Daniel or other volunteers as opposed to showing the BBC footage. The footage will still be used to train the AI however. 
+Because using the footage requires extra citations to use in research environments, most photos and videos in this research will be done by Daniel or other volunteers as opposed to showing the BBC footage. The footage will still be used to train the AI however. The footage can be accessed [here](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrw1.html). 
 
 #### September 25th - September  2023
 Working on updating environment to run Ostadabbas's code of projecting the Dlib facial landmarks onto a 3D model. Despite earlier notes stating that it was understood how to make environments, it is still not a smooth process to get them running. 
