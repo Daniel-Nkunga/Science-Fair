@@ -43,4 +43,8 @@ Working on updating environment to run Ostadabbas's code of projecting the Dlib 
 Created this logbook folder. All capstone project reports were uploaded, images were made, and the previous attempt at the Scientific Notebook was uploaded. Daniel is tired. Images are captioned using indents because the markdown that's meant to caption doesn't atually result in anything meaning it probably is for those with visual impairments. More professional logbook layouts will be looked into at a later date.
 
 #### October 3rd 2023
-Progress Reprot. Created new environment on Makerspace Desktop to (eventually) run training data on. Data does not come in a .mp4, .mov, or any of the other common video formats so accessesing it needs to be explored more. 
+Progress Reprot. Created new environment on Makerspace Desktop to (eventually) run training data on called NkuSciFair. Data does not come in a .mp4, .mov, or any of the other common video formats so accessesing it needs to be explored more. 
+
+
+#### October 5th 2023
+Cleaned on local Science Fair Python Environment of extra downloads. Created a new environment explicitly for testing Ostadabbas's code called 3DLMTesting [standing for 3D landmak testing]. Submitted logbook report 2. 
