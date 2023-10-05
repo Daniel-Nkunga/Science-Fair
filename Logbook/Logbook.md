@@ -36,8 +36,11 @@ Afterwards, dots were isolated to only be over the nose and moth so training cou
 Corresponded with Rob Cooper from the BBC to aquire footage for later training AI. This footage has been used before to train an AI model to read lips for Lipnet's lip reading model. Aquiring and using require a form and is valid for a year.  
 Because using the footage requires extra citations to use in research environments, most photos and videos in this research will be done by Daniel or other volunteers as opposed to showing the BBC footage. The footage will still be used to train the AI however. The footage can be accessed [here](https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrw1.html). 
 
-#### September 25th - September  2023
+#### September 25th - September 28th 2023
 Working on updating environment to run Ostadabbas's code of projecting the Dlib facial landmarks onto a 3D model. Despite earlier notes stating that it was understood how to make environments, it is still not a smooth process to get them running. 
 
-#### September 28th
+#### September 28th 2023
 Created this logbook folder. All capstone project reports were uploaded, images were made, and the previous attempt at the Scientific Notebook was uploaded. Daniel is tired. Images are captioned using indents because the markdown that's meant to caption doesn't atually result in anything meaning it probably is for those with visual impairments. More professional logbook layouts will be looked into at a later date.
+
+#### October 3rd 2023
+Progress Reprot. Created new environment on Makerspace Desktop to (eventually) run training data on. Data does not come in a .mp4, .mov, or any of the other common video formats so accessesing it needs to be explored more. 
