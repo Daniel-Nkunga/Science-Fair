@@ -48,3 +48,6 @@ Progress Reprot. Created new environment on Makerspace Desktop to (eventually) r
 
 #### October 5th 2023
 Cleaned on local Science Fair Python Environment of extra downloads. Created a new environment explicitly for testing Ostadabbas's code called 3DLMTesting [standing for 3D landmak testing]. Submitted logbook report 2. 
+
+#### October 12th 2023
+Set up conda environments on local device and makerspace desktop. eos-py was installed at the most recent version on both (1.4.0) which was not the recommended 1.0.1. Hopefully not an issue later. All programs except landmarks_detection_video.py ran without errors. Not all of them had an output.
