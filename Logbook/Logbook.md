@@ -51,3 +51,6 @@ Cleaned on local Science Fair Python Environment of extra downloads. Created a n
 
 #### October 12th 2023
 Set up conda environments on local device and makerspace desktop. eos-py was installed at the most recent version on both (1.4.0) which was not the recommended 1.0.1. Hopefully not an issue later. All programs except landmarks_detection_video.py ran without errors. Not all of them had an output.
+
+#### October 16th 2023
+Working on creating own program to use the 3D landmarks from Ostadabbas to project on a live camera feed. File is under Initial Solo Testing Called 3DLMTesting.py
