@@ -54,3 +54,10 @@ Set up conda environments on local device and makerspace desktop. eos-py was ins
 
 #### October 16th 2023
 Working on creating own program to use the 3D landmarks from Ostadabbas to project on a live camera feed. File is under Initial Solo Testing Called 3DLMTesting.py
+
+
+#### October 24th 2023
+Editing the Ostadabbas Code to not use Euler andgles. Creating new folder titles 3DLMTesting in Initial Solo Testing where test can be contained without changing original code. Issue comes from the Euclidian angles which are not working the way they are meant to. This can be solved two ways: 1) fix the version of Dlib and eos to match the recomended version in the README or 2) figure out how euler coordinates work and figure out a way to output them. Problem with one is that it would force me to manually make the wheels for eos which would require me to download and us Visual Studio (which is now in process) and work in C (I do not know how to do that). The problem with two is that it would require me to look into how to give the code a Euler coordinate. I don't know how to do that. Thouch I am looking into it. Might need to ask Monson a brief rundown of how Euler coordinates work. 
+![Console error message due to invalid Euler numbers - October 24, 2023](/Logbook/Images/ConsoleErrorMessage#1.png)
+
+    Just an image of the error message I'm getting when tryin to run the program "landmark_detection_video.py"
