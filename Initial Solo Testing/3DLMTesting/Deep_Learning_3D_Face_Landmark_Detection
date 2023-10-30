@@ -1,3 +1,0 @@
-a Deep Neural Network Model has been trained to estimate the 3D (x,y,z) coorediantes of the 68 landmarks on the face. This is based on a paper in the follwoing link:
-https://arxiv.org/abs/1703.07332
-
