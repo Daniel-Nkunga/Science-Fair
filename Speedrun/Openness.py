@@ -1,81 +1,79 @@
-import dlib
 import cv2
+import mediapipe as mp
 import math
 
-# Load dlib's face detector and facial landmark predictor
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+# Initialize MediaPipe Face Detection
+mp_drawing = mp.solutions.drawing_utils
+mp_face_mesh = mp.solutions.face_mesh
 
-# Start capturing video from the webcam
+# Initialize webcam
 cap = cv2.VideoCapture(0)
 
-while True:
-    # Capture frame-by-frame
-    ret, frame = cap.read()
+special = [13, 14, 82, 87, 312, 317]
+closed = 5
 
-    # Convert the image to grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    # Detect faces in the grayscale image
-    faces = detector(gray)
-
-    # Iterate over each detected face
-    for face in faces:
-        # Predict facial landmarks
-        landmarks = predictor(gray, face)
+# Initialize MediaPipe Face Mesh
+with mp_face_mesh.FaceMesh(
+    static_image_mode=False,
+    max_num_faces=1,
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5) as face_mesh:
+    
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
         
-        # Calculate the distance between landmarks 61 and 67
-        x61, y61 = landmarks.part(61).x, landmarks.part(61).y
-        x67, y67 = landmarks.part(67).x, landmarks.part(67).y
-        distanceCenter = math.sqrt((x67 - x61)**2 + (y67 - y61)**2)
+        # Convert BGR image to RGB
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         
-        x62, y62 = landmarks.part(62).x, landmarks.part(62).y
-        x66, y66 = landmarks.part(66).x, landmarks.part(66).y
-        distanceRight = math.sqrt((x66 - x62)**2 + (y66 - y62)**2)
-
-        x63, y63 = landmarks.part(63).x, landmarks.part(63).y
-        x65, y65 = landmarks.part(65).x, landmarks.part(65).y
-        distanceLeft = math.sqrt((x65 - x63)**2 + (y65 - y63)**2)
-
-
-        #  # Print the distance (for debugging)
-        # print("Distance between landmarks 61 and 67:", distanceCenter)
-        # print("Distance between landmarks 64 and 66:", distanceRight)
-        # print("Distance between landmarks 62 and 66:", distanceLeft)
+        # Detect facial landmarks
+        results = face_mesh.process(rgb_frame)
         
-        # Draw facial landmarks on the frame
-        for n in range(0, 68):
-            x = landmarks.part(n).x
-            y = landmarks.part(n).y
-            if n == 61 or n == 67:
-                cv2.circle(frame, (x, y), 1, (0, 0, 255), -1)
-            elif n == 62 or n == 66:
-                cv2.circle(frame, (x, y), 1, (0, 255, 255), -1)  # Red color for landmarks 61 and 67
-            elif n == 63 or n == 65:
-                cv2.circle(frame, (x, y), 1, (255, 255, 0), -1)
-            else:
-                cv2.circle(frame, (x, y), 1, (0, 255, 0), -1)  # Green color for other landmarks
+        if results.multi_face_landmarks:
+            for face_landmarks in results.multi_face_landmarks:
+                # Draw dots on facial landmarks with custom colors
+                for i, landmark in enumerate(face_landmarks.landmark):
+                    if i in special:  # Landmark 13
+                        color = (0, 255, 0)  # Green
+                        x = int(landmark.x * frame.shape[1])
+                        y = int(landmark.y * frame.shape[0])
+                        cv2.circle(frame, (x, y), 1, color, 1)
+                        # Print text with spacing at top left corner
+                        # cv2.putText(frame, f"Special landmark {i}:", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1, cv2.LINE_AA)
+                        # cv2.putText(frame, f"({x}, {y})", (10, 50 + i*20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1, cv2.LINE_AA)
+                    else:
+                        color = (255, 0, 0)  # Default color: Red
+                        x = int(landmark.x * frame.shape[1])
+                        y = int(landmark.y * frame.shape[0])
+                        cv2.circle(frame, (x, y), 1, color, 1)
 
-        cv2.putText(frame, f"Center: {distanceCenter:.2f}", (50, 75), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-        cv2.putText(frame, f"Right: {distanceRight:.2f}", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
-        cv2.putText(frame, f"Left: {distanceLeft:.2f}", (50, 125), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2)
+                # Calculate distance between landmarks 13 and 14
+                landmark_13 = (face_landmarks.landmark[13].x * frame.shape[1], face_landmarks.landmark[13].y * frame.shape[0])
+                landmark_14 = (face_landmarks.landmark[14].x * frame.shape[1], face_landmarks.landmark[14].y * frame.shape[0])
+                distanceCenter = math.sqrt((landmark_13[0] - landmark_14[0])**2 + (landmark_13[1] - landmark_14[1])**2)
+                landmark_82 = (face_landmarks.landmark[82].x * frame.shape[1], face_landmarks.landmark[82].y * frame.shape[0])
+                landmark_87 = (face_landmarks.landmark[87].x * frame.shape[1], face_landmarks.landmark[87].y * frame.shape[0])
+                distanceLeft = math.sqrt((landmark_82[0] - landmark_87[0])**2 + (landmark_82[1] - landmark_87[1])**2)
+                landmark_312 = (face_landmarks.landmark[312].x * frame.shape[1], face_landmarks.landmark[312].y * frame.shape[0])
+                landmark_317 = (face_landmarks.landmark[317].x * frame.shape[1], face_landmarks.landmark[317].y * frame.shape[0])
+                distanceRight = math.sqrt((landmark_312[0] - landmark_317[0])**2 + (landmark_312[1] - landmark_317[1])**2)
+                
+                # Check if distance is less than 10 and turn landmarks red
+                if distanceCenter < closed and distanceLeft < closed and distanceRight < closed:
+                    cv2.circle(frame, (int(landmark_13[0]), int(landmark_13[1])), 1, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(landmark_14[0]), int(landmark_14[1])), 1, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(landmark_82[0]), int(landmark_82[1])), 1, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(landmark_87[0]), int(landmark_87[1])), 1, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(landmark_312[0]), int(landmark_312[1])), 1, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(landmark_317[0]), int(landmark_317[1])), 1, (0, 0, 255), -1)
+        
+        cv2.imshow('Face Dots', frame)
+        
+        # Break loop on 'q' key press
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
-        # Check if distance is less than 20
-        if distanceCenter < 17 and distanceRight < 17 and distanceLeft < 17:
-            # Display "Closed" and distances
-            cv2.putText(frame, "Closed", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-            
-
-    # Resize the frame (optional)
-    frame = cv2.resize(frame, (3*800, 3*600))  # Adjust the size as needed
-
-    # Display the resulting frame
-    cv2.imshow('Facial Landmarks', frame)
-
-    # Exit loop if 'q' is pressed
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-# Release the capture
+# Release resources
 cap.release()
 cv2.destroyAllWindows()

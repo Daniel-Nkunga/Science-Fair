@@ -28,13 +28,15 @@ with mp_face_mesh.FaceMesh(
         
         if results.multi_face_landmarks:
             for face_landmarks in results.multi_face_landmarks:
-                # Draw dots on facial landmarks
-                mp_drawing.draw_landmarks(
-                    image=frame,
-                    landmark_list=face_landmarks,
-                    connections=None,
-                    landmark_drawing_spec=mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=1, circle_radius=1),
-                    connection_drawing_spec=None)
+                # Draw dots on facial landmarks with custom colors
+                for i, landmark in enumerate(face_landmarks.landmark):
+                    if i == 13:  # Landmark 13
+                        color = (0, 255, 0)  # Green
+                    else:
+                        color = (255, 0, 0)  # Default color: Red
+                    x = int(landmark.x * frame.shape[1])
+                    y = int(landmark.y * frame.shape[0])
+                    cv2.circle(frame, (x, y), 1, color, 1)
         
         cv2.imshow('Face Dots', frame)
         

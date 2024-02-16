@@ -36,11 +36,14 @@ with mp_face_mesh.FaceMesh(
                     landmark_drawing_spec=mp_drawing.DrawingSpec(color=(255, 0, 0), thickness=1, circle_radius=1),
                     connection_drawing_spec=None)
                 
-                # Print the number of each landmark
+                # Recolor landmark 13 to green
                 for idx, landmark in enumerate(face_landmarks.landmark):
                     landmark_x = int(landmark.x * frame.shape[1])
                     landmark_y = int(landmark.y * frame.shape[0])
-                    cv2.putText(frame, str(idx), (landmark_x, landmark_y), cv2.FONT_HERSHEY_SIMPLEX, 0.2, (255, 255, 255), 1, cv2.LINE_AA)
+                    if idx == 13:  # landmark 13
+                        cv2.putText(frame, str(idx), (landmark_x, landmark_y), cv2.FONT_HERSHEY_SIMPLEX, 0.2, (0, 255, 0), 1, cv2.LINE_AA)
+                    else:
+                        cv2.putText(frame, str(idx), (landmark_x, landmark_y), cv2.FONT_HERSHEY_SIMPLEX, 0.2, (255, 255, 255), 1, cv2.LINE_AA)
         
         cv2.imshow('Face Dots', frame)
         
