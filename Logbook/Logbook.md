@@ -61,3 +61,6 @@ Editing the Ostadabbas Code to not use Euler andgles. Creating new folder titles
 ![Console error message due to invalid Euler numbers - October 24, 2023](/Logbook/Images/ConsoleErrorMessage#1.png)
 
     Just an image of the error message I'm getting when tryin to run the program "landmark_detection_video.py"
+
+#### Februrary 12th 2024
+I hate committeing to GitHub for this porject and my old laptop died on  New Years Day so though I've done a lot of work on this assignment since Octoboer, it ha all been lost to time. So today we're starting off by deleting the "Other GitHub Users" folder. 
