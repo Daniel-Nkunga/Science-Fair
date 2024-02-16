@@ -10,7 +10,7 @@ mp_face_mesh = mp.solutions.face_mesh
 cap = cv2.VideoCapture(0)
 
 special = [13, 14, 82, 87, 312, 317]
-closed = 5
+closed = 10
 
 # Initialize MediaPipe Face Mesh
 with mp_face_mesh.FaceMesh(

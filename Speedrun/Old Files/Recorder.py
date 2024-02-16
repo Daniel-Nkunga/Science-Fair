@@ -5,7 +5,7 @@ from tkinter import simpledialog
 
 class VideoRecorder:
     def __init__(self, name, length):
-        self.name = "yes5" + name  # Automatically prepend "yes_" to the video name
+        self.name = "yell2" + name  # Automatically prepend "yes_" to the video name
         self.length = length
         self.folder = "Train"
         if not os.path.exists(self.folder):
