@@ -94,3 +94,5 @@ Coordinates were also extracted from these files with issues only arising with m
 Though there was an attempt to esablish a local Tensor Flow environment on my laptop, I quickly realized I didn't want to (and didn't have the time to) struggle to create one. Google Colab was used to create TensorFlow environments and after a few nights of stuggle the first models were trained. 
 
 More issues arrived once again when it came to the "All Models." Runtime errors kept on occurring with Google Colab not wanting to process millions of lines of data points and I couldn't easily build their models in the same way I built the other models. Ultimatly, I had to brute force their creation using Keras but the process furhter proved the point of this research of needing to limit the information being processed to only relevant information.
+
+![QR Code to project GitHub](/Logbook/Images/Github.jpg)
