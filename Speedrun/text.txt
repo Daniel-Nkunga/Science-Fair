@@ -1,3 +1,0 @@
-Focus of time dimensional 
-
-I have time series data tracking the points on a person's lips as they say "yes" or "no". Build me a Tensorflow solution to catgegorize an unlabeled input. 

@@ -6,7 +6,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_face_mesh = mp.solutions.face_mesh
 
 # Initialize video file path
-video_file_path = (r'C:\Users\danie\Desktop\Coding Spring 2024\Science-Fair\Speedrun\Train\yes1.mp4')
+video_file_path = r'C:\Users\danie\Desktop\Coding Spring 2024\Science-Fair\Speedrun\Old Files\Screenshot 2024-02-20 210722.png'
 
 # Initialize video capture object with video file
 cap = cv2.VideoCapture(video_file_path)
