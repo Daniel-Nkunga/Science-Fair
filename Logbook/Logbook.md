@@ -57,10 +57,40 @@ Working on creating own program to use the 3D landmarks from Ostadabbas to proje
 
 
 #### October 24th 2023
-Editing the Ostadabbas Code to not use Euler andgles. Creating new folder titles 3DLMTesting in Initial Solo Testing where test can be contained without changing original code. Issue comes from the Euclidian angles which are not working the way they are meant to. This can be solved two ways: 1) fix the version of Dlib and eos to match the recomended version in the README or 2) figure out how euler coordinates work and figure out a way to output them. Problem with one is that it would force me to manually make the wheels for eos which would require me to download and us Visual Studio (which is now in process) and work in C (I do not know how to do that). The problem with two is that it would require me to look into how to give the code a Euler coordinate. I don't know how to do that. Thouch I am looking into it. Might need to ask Monson a brief rundown of how Euler coordinates work. 
-![Console error message due to invalid Euler numbers - October 24, 2023](/Logbook/Images/ConsoleErrorMessage#1.png)
+Editing the Ostadabbas Code to not use Euler andgles. Creating new folder titles 3DLMTesting in Initial Solo Testing where test can be contained without changing original code. Issue comes from the Euclidian angles which are not working the way they are meant to. This can be solved two ways: 1) fix the version of Dlib and eos to match the recomended version in the README or 2. figure out how euler coordinates work and figure out a way to output them. Problem with one is that it would force me to manually make the wheels for eos which would require me to download and us Visual Studio (which is now in process) and work in C (I do not know how to do that). The problem with two is that it would require me to look into how to give the code a Euler coordinate. I don't know how to do that. Thouch I am looking into it. Might need to ask Monson a brief rundown of how Euler coordinates work. 
+![Console error message due to invalid Euler numbers - October 24, 2023](/Logbook/Images/ConsoleError.jpg)
+
 
     Just an image of the error message I'm getting when tryin to run the program "landmark_detection_video.py"
 
-#### Februrary 12th 2024
-I hate committeing to GitHub for this porject and my old laptop died on  New Years Day so though I've done a lot of work on this assignment since Octoboer, it ha all been lost to time. So today we're starting off by deleting the "Other GitHub Users" folder. 
+#### Editor's Note
+I started this project as a GitHub novice and initially grew to dislike it over the course of this project in particular. This was especially true becuase I felt like even though I was trying to make progress, I never seem to get any results. This led to me not committing for weeks at a time. On new years day, I lost my previous laptop meaning that the weeks I spent saving locally were gone. The next entries will no longer follow the day by day results and instead will summarize days/weeks works of progress at once.
+
+#### Late October through Early November 2023 (25th - 15th)
+Still trying to get Ostadabbas Facial Landmarks to work but cannot get the environment set up properly. I looks like an error with how the conda environment was set up. Though there were instructions on how to set up eos on the GitHub page, I don't think I followed them properly. 
+
+#### Early to Mid November 2023 (15th - 27th)
+For a mental switch, I started recording coodinates for training a future model beucase that would just require dlib. The chosen focus points were just the lips, the lips and nose, and all coordinates. A total of 150 vidoes were recorded. 50 yes videos, 50 no videos, 25 nice videos, and 25 yell videos. During this time, the first Openness.py program was created. Openness.py would be used to trim videos by detecting when the mouth was first open. Though it worked in theory, this is where the limits of Dlib were first brought into focus. Many videos didn't have valid starting/ending frames becuase dlib isn't meant to accuratly capture movements of the lips and is just meant to capture the face. This meant it would often get get locked off the face and never a return an open or closed position. 
+
+#### Late November to Early December (27th - 15th)
+The end of the month was spent getting forms prepared. As implied earlier, VideoTrimmer.py was created and run at this time to trim training videos to start when the mouth first open and end when the program was last open. At the end of this period, the first coordinates were also returned for the training videos as .csv files. 
+
+#### Late November to Early January (15th - 15th)
+During this time was winter break. I didn't work much over this time but as stated earlier, my laptop battery died during this time. 
+
+#### Late January (15th- 30th)
+After getting a new laptop and realizing how much progress was lost, I started creating a dlib environment again. Because it was a lot less of a struggle than I thought it was gonna be and I had gotten a new laptop with a lot of processing power, I also decided to attempt to set up a Media Pipe environment. Media Pipe was my inital plan for this project by my instructor and I were afraid of the computational cost. The environemnt was also relativly simple to set up after all the struggle early last semester and after testing, I realized I had to pivot to using it. Media Pipe not only had more landmarks, an greater example of the use of my research, but landmarks that were able to properly follow lip movements. After brining it back up with my instructor again, we decided it would be a viable switch.
+
+![Dlib facial landmarks on Daniel's Face - January 14th, 2024](/Logbook/Images/MediaPipeTesting.jpg)
+
+Training videos were quickly rerecorded with the same amount of videos for each word. During this time, Openness.py and VideoTrimmer.py were recreated to work for MediaPipe this time and resulted in much better resutls. 
+
+New focus points were chosen of the lips alone, lips and eyebrows, and all landmarks. This is because I couldn't find documentation of other prominent landmarks and the ones chosen should still be relevant for lip reading. 
+
+At this point, the project was also going to flatten the image to get a cannonical face image but ultimately I couldn't figure it out and had to abandon that part of the project. Future research should look into flattening imagess to this format instead of/in conjuction with  refocusing the image.
+
+Coordinates were also extracted from these files with issues only arising with models needing all datapoints. Each file would have about 35,000 data points and no matter what I did, my machine would only do a random spread of fifty without me manually telling it to get data from certain files. Though this was less of an issue for "All" data points, "All Shifted" proved to be even more of a struggle as there were more computations going on in the background that the laptop still refused to do even when explictly told to.
+
+Though there was an attempt to esablish a local Tensor Flow environment on my laptop, I quickly realized I didn't want to (and didn't have the time to) struggle to create one. Google Colab was used to create TensorFlow environments and after a few nights of stuggle the first models were trained. 
+
+More issues arrived once again when it came to the "All Models." Runtime errors kept on occurring with Google Colab not wanting to process millions of lines of data points and I couldn't easily build their models in the same way I built the other models. Ultimatly, I had to brute force their creation using Keras but the process furhter proved the point of this research of needing to limit the information being processed to only relevant information.
