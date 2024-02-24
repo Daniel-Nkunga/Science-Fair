@@ -95,4 +95,16 @@ Though there was an attempt to esablish a local Tensor Flow environment on my la
 
 More issues arrived once again when it came to the "All Models." Runtime errors kept on occurring with Google Colab not wanting to process millions of lines of data points and I couldn't easily build their models in the same way I built the other models. Ultimatly, I had to brute force their creation using Keras but the process furhter proved the point of this research of needing to limit the information being processed to only relevant information.
 
-![QR Code to project GitHub](/Logbook/Images/Github.jpg)
+#### February 23rd, 2024
+
+This was the second and final day our our regional Science Fair. I placed second in the System Software category and now am continuing on to the State Competition in late March. Though I'm greatful to make I made it this far and the state I was able to end my project in, the overall process wasn't the cleanest and I would like to make it a lot easier for everyone involved now that I'm continuing my research. 
+
+Starting with improvements for my scientific process, I want to start with improving my documetation in both my logbook and GitHub commits. I'd like to work with this project 4-5 times a week and consistently document all progress made both here and in my Git repository. For all memssages in the logbook, I'll try to include at least on image. Git commit messages will still probably be pretty bare bones (I haven't downloaded Parker's project yet) but I'll work on making actaully good commit messages. 
+
+Today, I did limited work on getting TensorFlow to work locally on my machine. As convinent as Google Colab was for the past research, it already proved how unwilling it was to continue with larger data when it came to the all databases and if I want to improve this projects inthe way I'm wanting to, I can't be limited that much by software. For it's installation, I followed [Saturn Cloud's](https://saturncloud.io/blog/how-to-install-tensorflow-with-anaconda-on-windows/) and then continued with ChatGPT to make sure it was using my GPUs. Though TensorFlow (TF) was confirmed to be downloaded with the first bit of sample code the website provided, the second code proved that it still wasn't using my GPU. I used ChatGPT to hopefully for the useage fo my GPU and ended this this error but ultimately a success message. If more issues arise, they originate here. 
+
+![Console message after installing tensorflow-gpu - Februray 23rd, 2024](/Logbook/Images/TFError_02_23.jpg)
+
+TF currently states my machine has 0 GPUs which should be innacurate. I'm reseach again in the morning but I have an Nvidia 4080(?) graphics card which I thought my machine would be using. 
+
+*Programs run: TFTest.py

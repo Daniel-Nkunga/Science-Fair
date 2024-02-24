@@ -30,10 +30,7 @@ with mp_face_mesh.FaceMesh(
             for face_landmarks in results.multi_face_landmarks:
                 # Draw dots on facial landmarks with custom colors
                 for i, landmark in enumerate(face_landmarks.landmark):
-                    if i == 4:  # Landmark 13
-                        color = (255, 0, 0)  # Green
-                    else:
-                        color = (0, 255, 0)  # Default color: Red
+                    color = (255, 255, 255)  # Default color: Red
                     x = int(landmark.x * frame.shape[1])
                     y = int(landmark.y * frame.shape[0])
                     cv2.circle(frame, (x, y), 1, color, 1)
